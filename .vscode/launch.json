@@ -2,6 +2,12 @@
   "configurations": [
     {
       "type": "java",
+      "name": "CodeLens (Launch) - BinaryTree",
+      "request": "launch",
+      "mainClass": "BinaryTree"
+    },
+    {
+      "type": "java",
       "name": "CodeLens (Launch) - MaxHeap",
       "request": "launch",
       "mainClass": "MaxHeap"
