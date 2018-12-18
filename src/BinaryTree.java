@@ -253,6 +253,46 @@ public class BinaryTree {
     } 
   }
 
+  public TreeNode ceiling(TreeNode currNode, int k) {
+    if (currNode == null) {
+      return null;
+    } else if (k > currNode.getKey()) {
+      return ceiling(currNode.getRightChild(), k);
+    } else if (k < currNode.getKey()) {
+      TreeNode leftSubtreeCeiling = ceiling(currNode.getLeftChild(), k);
+      if (leftSubtreeCeiling != null) {
+        return leftSubtreeCeiling;
+      }
+      return currNode;
+    } else {
+      return currNode;
+    }
+  }
+
+  public TreeNode ceiling(int k) {
+    return ceiling(this.root, k);
+  }
+
+  public TreeNode floor(TreeNode currNode, int k) {
+    if (currNode == null) {
+      return null;
+    } else if (k > currNode.getKey()) {
+      TreeNode rightSubtreeFloor = floor(currNode.getRightChild(), k);
+      if (rightSubtreeFloor != null) {
+        return rightSubtreeFloor;
+      }
+      return currNode;
+    } else if (k < currNode.getKey()) {
+      return floor(currNode.getLeftChild(), k);
+    } else {
+      return currNode;
+    }
+  }
+
+  public TreeNode floor(int k) {
+    return floor(this.root, k);
+  }
+
   public static void main(String[] args) {
 
     // insert works
@@ -339,7 +379,10 @@ public class BinaryTree {
     // bst.delete(bst.searchByKey(99));
     // bst.delete(bst.searchByKey(11));
     //bst.delete(bst.searchByKey(65));
-    bst.delete(bst.searchByKey(41));
+    //bst.delete(bst.searchByKey(41));
 
+
+    TreeNode ceil = bst.ceiling(12);
+    TreeNode floor = bst.floor(12);
   }
 }
